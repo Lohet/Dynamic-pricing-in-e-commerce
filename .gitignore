@@ -18,3 +18,8 @@ build/
 *~
 .env
 .venv/
+
+# Ignore unorganized files at root level (keep organized structure in data/, notebooks/, results/)
+/*.ipynb
+/*.csv
+/*.png

@@ -1,3 +1,0 @@
-Model,RMSE (log),MAE (log),R²,RMSE (BRL),CV RMSE (Best)
-LightGBM (Proposed),0.03716,0.01378,0.99833,R$23.06,0.037624
-XGBoost (Proposed),0.04113,0.01802,0.99795,R$25.50,0.042111
