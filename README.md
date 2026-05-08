@@ -8,14 +8,46 @@
 
 ## Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Dataset](#dataset)
-3. [Workflow](#workflow)
-4. [Feature Engineering](#feature-engineering)
-5. [Algorithms & Hyperparameter Tuning](#algorithms)
-6. [Results](#results)
-7. [Requirements](#requirements)
-8. [How to Run](#how-to-run)
+1. [Project Structure](#project-structure)
+2. [Project Overview](#project-overview)
+3. [Dataset](#dataset)
+4. [Workflow](#workflow)
+5. [Feature Engineering](#feature-engineering)
+6. [Algorithms & Hyperparameter Tuning](#algorithms)
+7. [Results](#results)
+8. [Requirements](#requirements)
+9. [How to Run](#how-to-run)
+
+---
+
+## Project Structure
+
+```
+project/
+├── data/                              # Input data files
+│   ├── olist_orders_dataset.csv
+│   ├── olist_order_items_dataset.csv
+│   ├── olist_order_payments_dataset.csv
+│   ├── olist_order_reviews_dataset.csv
+│   ├── olist_products_dataset.csv
+│   ├── olist_customers_dataset.csv
+│   ├── olist_sellers_dataset.csv
+│   └── product_category_name_translation.csv
+├── notebooks/                         # Jupyter notebooks (organized by version)
+│   ├── brazilian-e-commerce-data-cleansing.ipynb
+│   ├── review1_dynamic_pricing.ipynb
+│   ├── review2_dynamic_pricing.ipynb
+│   ├── dynamic_pricing_review3.ipynb
+│   └── dynamic_pricing_review3_research1.ipynb
+├── results/                           # Generated outputs (figures & tables)
+│   ├── fig*.png                       # Generated visualization figures
+│   ├── table_results.csv              # Model comparison results
+│   └── table2_results.csv             # Additional results
+├── venv/                              # Python virtual environment
+├── README.md                          # This file
+├── requirements.txt                   # Python dependencies
+├── Code Citations.md                  # Attribution & references
+└── .gitignore                         # Git configuration
 
 ---
 
@@ -151,9 +183,33 @@ pip install -r requirements.txt
 
 ## How to Run
 
-1. Clone / download this repository.
-2. Ensure you have the `project/` directory structured correctly with all 8 Olist CSVs alongside the notebook.
-3. Open `dynamic_pricing_review3.ipynb` in a Notebook Editor setup (Jupyter or VS Code).
-4. Run all cells systematically (Kernel → Restart & Run All).
+1. **Clone / download** this repository.
 
-The notebook establishes transformations seamlessly, models targets per cell dynamically displaying progressive metric updates outputted to console and PNG visualizations spanning directory output loops.
+2. **Set up environment:**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   
+   pip install -r requirements.txt
+   ```
+
+3. **Navigate to the notebooks folder** and open any notebook:
+   ```bash
+   cd notebooks/
+   ```
+   
+   - **Start here:** `dynamic_pricing_review3.ipynb` — The most recent, comprehensive implementation
+   - Other reviews: `review1_dynamic_pricing.ipynb`, `review2_dynamic_pricing.ipynb` — Prior iterations
+   - Data cleansing: `brazilian-e-commerce-data-cleansing.ipynb` — Initial EDA and data prep
+
+4. **Run the notebook** in your editor (Jupyter Lab, VS Code, etc.):
+   - Open `dynamic_pricing_review3.ipynb`
+   - Kernel → Restart & Run All
+   - Generated figures will appear in the `../results/` folder
+
+5. **Data paths** are configured to load from `../data/` automatically. No manual configuration needed.
+
+**GPU Support:** The notebook automatically detects NVIDIA GPUs for LightGBM. If unavailable, training seamlessly falls back to CPU mode.
